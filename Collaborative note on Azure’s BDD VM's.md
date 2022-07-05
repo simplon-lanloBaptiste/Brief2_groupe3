@@ -7,13 +7,13 @@
 
 ## ***Sommaire<a name="home"></a>***
 
-***[1 - Topographie du réseau sur Azure en Flowchart](#NetFlo)*** 
+***[1 - Topologie du réseau sur Azure en Flowchart](#NetFlo)*** 
 
 ***[2 - Ressources nécessaires prévues](#Res)***
 
 ***[3 - Plan d'action](#Actplan)***
 
-## ***1 - Topographie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
+## ***1 - Topologie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 
 ```mermaid
 flowchart TD
@@ -45,7 +45,7 @@ flowchart TD
         end
 
         gw(gateway)
-        sentry[Azure Sentry]
+        sentry[Azure Sentinel]
 
         
 
@@ -138,6 +138,10 @@ flowchart TD
 
         - Création des différentes documentations
 
+        - Répondre au client
+
+
+Commentaire : représenter le réseau à déployer sous forme de tableau (adressages IPs, ports, etc)
 
 [Retour au sommaire](#home)
 

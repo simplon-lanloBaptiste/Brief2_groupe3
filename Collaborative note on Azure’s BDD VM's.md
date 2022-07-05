@@ -7,35 +7,13 @@
 
 ## ***0 - Sommaire<a name="home"></a>***
 
-***[1 - Plan d'action](#Actplan)***
+***[1 - Topographie du réseau sur Azure en Flowchart](#NetFlo)*** 
 
-***[2 - Topographie du réseau sur Azure en Flowchart](#NetFlo)***
+***[2 - Ressources nécessaires prévues](#Res)***
 
+***[3 - Plan d'action](#Actplan)***
 
-## ***1 - Plan d'action :<a name="Actplan"></a>***
-
-        - Tâches à faire  
- 
-        - Créer le schéma réseau 
-
-        - Créer 3 VMs pour NextCloud  
-
-        - Déployer les VMs NextCloud 
- 
-        - Configurer les VM sur les mêmes réseaux
- 
-        - Créer les utilisateurs et accorder les droits d’accès
- 
-        - Tester la structure 
- 
-        - Création des différentes documentations
-
-
-[Retour au sommaire](#home)
-
-
-
-## ***2 - Topographie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
+## ***1 - Topographie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 
 ```mermaid
 flowchart TD
@@ -116,7 +94,7 @@ flowchart TD
 [Retour au sommaire](#home)
 
 
-***3 - Liste des ressources Azure prévues à déployer***<a name=List></a>
+***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>
 
     - 3 VM Ubuntu 20
           - 2 VM avec 64Gb Standard SDD - Dual Core - 8Gb RAM
@@ -130,7 +108,36 @@ flowchart TD
     - 1 Azure Sentry
     - 
 
+[Retour au sommaire](#home)
 
+## ***3 - Plan d'action :<a name="Actplan"></a>***
+
+        - Planifier les actions et quelles ressources mettre en place
+ 
+        - Créer le schéma réseau
+
+        - Créer 3 VMs pour NextCloud
+            - 1 VM Admin
+            - 1 VM BDD
+            - 1 VM Applicative
+
+        - Déployer NextCloud sur la VM Applicative, MariaDB sur la VM BDD
+
+        - Créer les utilisateurs/groupes et accorder les droits d’accès
+
+        - Configurer les accès au réseau des VMs
+            - Modifier les ports d'accès (10022 au lieu de 22/ 10080 au lieu de 80...)
+            - Couper l'accès SSH public aux VMs Appli et BDD
+ 
+        - Tester la structure
+            - Accès au portail web NextCloud en tant que "user"
+            - Accès en SSH only depuis la VM d'Admin vers les autres VMs
+            - 
+
+        - Création des différentes documentations
+
+
+[Retour au sommaire](#home)
 
 
 

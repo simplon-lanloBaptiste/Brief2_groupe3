@@ -106,7 +106,6 @@ flowchart TD
     - 1 virtual gateway
     - 3 public IP adresses (1 temporary)
     - 1 Azure Sentry
-    - 
 
 [Retour au sommaire](#home)
 
@@ -125,14 +124,14 @@ flowchart TD
 
         - Créer les utilisateurs/groupes et accorder les droits d’accès
 
+        - Création des clés SSH pour les différents Users
+
         - Configurer les accès au réseau des VMs
             - Modifier les ports d'accès (10022 au lieu de 22/ 10080 au lieu de 80...)
             - Couper l'accès SSH public aux VMs Appli et BDD
  
         - Tester la structure
             - Accès au portail web NextCloud en tant que "user"
-            - Accès en SSH only depuis la VM d'Admin vers les autres VMs
-            - 
 
         - Création des différentes documentations
 

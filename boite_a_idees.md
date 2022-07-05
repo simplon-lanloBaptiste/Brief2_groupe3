@@ -1,0 +1,1 @@
+Penser à utiliser CRONTable pour la récup de logs

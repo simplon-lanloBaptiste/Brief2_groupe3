@@ -16,7 +16,7 @@
 
         - Tâches à faire  
  
-        - crée le schéma réseau 
+        - Créer le schéma réseau 
 
         - Créer 3 VMs pour NextCloud  
 
@@ -35,7 +35,7 @@
 
 
 
-## ***2 - Topogragie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
+## ***2 - Topographie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 
 ```mermaid
 flowchart TD
@@ -118,12 +118,12 @@ flowchart TD
 
 ***3 - Liste des resources Azure prévues à déployer***<a name=List></a>
 
-    - 3 VM Ubuntu 20
+    - 3 VM Ubuntu 20.04
           - 2 VM avec 64Gb Standard SDD - Dual Core - 8Gb RAM
             - 1 VM d'Administration "rebond" pour accéder aux 2 autres en SSH
             - 1 VM Applicative "NextCloud"
           - 1 VM avec 128Gb Premium SSD - Dual Core - 16Gb RAM
-            - VM de Base de Donnée en MariaBD
+            - VM de Base de Données en MariaBD
     - 1 virtual network
     - 1 virtual gateway
     - 3 public IP adresses (1 temporary)

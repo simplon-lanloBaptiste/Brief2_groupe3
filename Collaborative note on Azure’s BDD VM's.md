@@ -5,7 +5,7 @@
     Dans le cadre du projet “LifeSense”, nous avons besoin d’échanger des gros fichiers (plusieurs GO). Nous souhaitons le faire sans 
     passer par un drive tierce, de façon simple par un navigateur web, avec des accès sécurisés par utilisateur.
 
-## ***0 - Sommaire<a name="home"></a>
+## ***0 - Sommaire<a name="home"></a>***
 
 ***[1 - Plan d'action](#Actplan)***
 

@@ -5,7 +5,7 @@
     Dans le cadre du projet “LifeSense”, nous avons besoin d’échanger des gros fichiers (plusieurs GO). Nous souhaitons le faire sans 
     passer par un drive tierce, de façon simple par un navigateur web, avec des accès sécurisés par utilisateur.
 
-## ***0 - Sommaire<a name="home"></a>***
+## ***Sommaire<a name="home"></a>***
 
 ***[1 - Topographie du réseau sur Azure en Flowchart](#NetFlo)*** 
 
@@ -131,7 +131,11 @@ flowchart TD
             - Couper l'accès SSH public aux VMs Appli et BDD
  
         - Tester la structure
-            - Accès au portail web NextCloud en tant que "user"
+            - Accès au portail web NextCloud en tant que "user" (http/10080)
+            - Vérification du logging d'Azure Sentinel
+            - Test de disponibilité Application Insights
+
+        - Accès à l'application via TLS (HTTPS)
 
         - Création des différentes documentations
 

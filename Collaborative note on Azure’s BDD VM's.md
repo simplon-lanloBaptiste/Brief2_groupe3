@@ -1,5 +1,10 @@
 # Collaborative creation of Nextcloud VMs
 
+    Demande utilisateur :
+
+    Dans le cadre du projet “LifeSense”, nous avons besoin d’échanger des gros fichiers (plusieurs GO). Nous souhaitons le faire sans 
+    passer par un drive tierce, de façon simple par un navigateur web, avec des accès sécurisés par utilisateur.
+
 ## ***0 - Sommaire<a name="home"></a>
 
 ***[1 - Plan d'action](#Actplan)***
@@ -115,7 +120,10 @@ flowchart TD
 
     - 3 VM Ubuntu 20
           - 2 VM avec 64Gb Standard SDD - Dual Core - 8Gb RAM
+            - 1 VM d'Administration "rebond" pour accéder aux 2 autres en SSH
+            - 1 VM Applicative "NextCloud"
           - 1 VM avec 128Gb Premium SSD - Dual Core - 16Gb RAM
+            - VM de Base de Donnée en MariaBD
     - 1 virtual network
     - 1 virtual gateway
     - 3 public IP adresses (1 temporary)

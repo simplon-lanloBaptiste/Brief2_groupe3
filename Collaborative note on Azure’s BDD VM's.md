@@ -9,14 +9,14 @@
 
 ***[1 - Plan d'action](#Actplan)***
 
-***[2 - Topogragie du réseau sur Azure en Flowchart](#NetFlo)***
+***[2 - Topographie du réseau sur Azure en Flowchart](#NetFlo)***
 
 
 ## ***1 - Plan d'action :<a name="Actplan"></a>***
 
         - Tâches à faire  
  
-        - crée le schéma réseau 
+        - Créer le schéma réseau 
 
         - Créer 3 VMs pour NextCloud  
 
@@ -35,7 +35,7 @@
 
 
 
-## ***2 - Topogragie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
+## ***2 - Topographie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 
 ```mermaid
 flowchart TD

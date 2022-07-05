@@ -94,18 +94,17 @@ flowchart TD
 [Retour au sommaire](#home)
 
 
-***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>
+## ***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>
 
     - 3 VM Ubuntu 20
           - 2 VM avec 64Gb Standard SDD - Dual Core - 8Gb RAM
             - 1 VM d'Administration "rebond" pour accéder aux 2 autres en SSH
-            - 1 VM Applicative "NextCloud"
           - 1 VM avec 128Gb Premium SSD - Dual Core - 16Gb RAM
             - VM de Base de Donnée en MariaBD
     - 1 virtual network
     - 1 virtual gateway
-    - 3 public IP adresses (1 temporary)
-    - 1 Azure Sentry
+    - 3 adresses IP publiques (1 temporaire)
+    - 1 Azure Sentinel  
 
 [Retour au sommaire](#home)
 

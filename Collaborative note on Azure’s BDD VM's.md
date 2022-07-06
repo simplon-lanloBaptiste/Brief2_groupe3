@@ -13,6 +13,8 @@
 
 ***[3 - Plan d'action](#Actplan)***
 
+***[X - Commandes prévues](#commandes_prévues.md)***
+
 ## ***1 - Topologie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 
 ```mermaid
@@ -74,7 +76,6 @@ flowchart TD
 
 ```
 
-
 [Retour au sommaire](#home)
 
 
@@ -128,8 +129,6 @@ flowchart TD
 Commentaire : représenter le réseau à déployer sous forme de tableau (adressages IPs, ports, etc)
 
 [Retour au sommaire](#home)
-
-
 
 
 

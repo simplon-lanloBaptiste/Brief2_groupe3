@@ -13,7 +13,7 @@
 
 ***[3 - Plan d'action](#Actplan)***
 
-***[X - Commandes prévues](#commandes_prévues.md)***
+***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
 
 ## ***1 - Topologie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 

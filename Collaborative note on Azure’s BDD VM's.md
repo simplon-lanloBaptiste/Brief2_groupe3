@@ -19,7 +19,11 @@ ___
 
 ***[5 - Documentation Génération de clé privée/publique](#Keygen)***
 
-***[5 - Configuration d'une paire de clé SSH](#SSH)***
+***[6 - Configuration d'une paire de clé SSH](#SSH)***
+
+***[7 - Installation de PHP](#PHP)***
+
+***[8. Installation MariaDB](#MDB)***
 
 ***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
 
@@ -145,7 +149,7 @@ ___
 
 - [ ] Configurer les accès au réseau des VMs
   - [ ] Modifier les ports d'accès 
-    - [x] 10022 au lieu de 22
+    - [ ] 10022 au lieu de 22
     - [ ] 10080 au lieu de 80...)
     - [x] Couper l'accès SSH public aux VMs Appli et BDD
 <br></br>
@@ -246,7 +250,7 @@ Exemple :
 
 ___
 
-## ***5 - Documentation Génération de clé privée/publique du serveur***
+## ***5 - Documentation Génération de clé privée/publique du serveur<a name="Keygen"></a>***
 
 Tout d'abord il faut créer les clés.
 
@@ -268,21 +272,21 @@ Votre clef privée est parametrée sur putty.
 
 ___
 
-## ***5 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
+## ***6 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
 
-#### ***5-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
+#### ***6-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
 
 ![Log](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/log.PNG "Log")
 
-#### ***5-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
+#### ***6-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
 
 ![keygen](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/ssh-keygen.PNG "keygen")
 
-#### ***5-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
+#### ***6-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
 
 ![Chemin](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/chemin.PNG "Chemin")
 
-#### ***5-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
+#### ***6-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
 
 ![Done](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/done.PNG "Done")
 
@@ -290,4 +294,85 @@ ___
 [Retour au sommaire](#home)
 
 ___
+
+## ***7 - Installation de PHP :<a name="PHP"></a>***
+
+En suivant le [guide d'installation de NextCloud](https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation), nous avons dans un premier temps identifié quels composants / programmes étaient déjà installés. PHP est présent en version 1, nous avons choisi d'installer la version la plus récente en 8.0  en suivant [ce guide](https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/) qui explique bien les prérequis et les étapes d'installation de PHP et de ses diffétents modules.  
+
+Les commandes utilisées sont :  
+
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt install php8.0
+
+Pour continuer nous avons retrouvé la liste de tous les modules déjà installés :  
+
+    php8.0 -m
+
+![phpModuleList](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/1_screen1_PHP_modulesList.png)  
+
+Ensuite nous avons identifié les modules prérequis à l'installation de NextCloud manquants et les avons installés manuellement via la commande :  
+
+    sudo apt install php8.0-[nom du module]
+
+## ***8. Installation MariaDB<a name="MDB"></a>***
+Sur la vm BDD  
+
+    sudo apt update
+    sudo apt install mariadb-server
+    sudo mysql_secure_installation
+
+![installMariaDB1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/0_screen1_InstallMariaDB.png)  
+
+![installMariaDB2](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/0_screen2_InstallMariaDBRootPWD.png)  
+
+![installMariaDB3](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/0_screen3_InstallMariaDBAnonymousUser.png)  
+
+![installMariaDB4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/0_screen4_InstallMariaDBLastSteps.png)  
+
+
+démarrage du service MariaDB
+
+    groupe3@VMBDDB2G3:~$ sudo systemctl start mariadb
+
+check du démarrage du service MariaDB :
+
+    groupe3@VMBDDB2G3:~$ sudo systemctl status mariadb
+
+Création de la base de données :  
+
+Il faut lancer une instance MySQL
+
+    groupe3@VMBDDB2G3:~$ sudo MySQL
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.
+    Your MariaDB connection id is 41
+    Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1 Ubuntu 20.04
+
+    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+    MariaDB [(none)]>
+
+Nous ne sommes plus en "bash" (groupe3@VMBDDB2G3:~$), désormais la console ne comprend que les commandes MySQL.  
+
+Puis créer la base de données (nommée G3B2BDD dans notre cas)  
+
+    MariaDB [(none)]> CREATE DATABASE G3B2BDD;
+    Query OK, 1 row affected (0.000 sec)
+
+    MariaDB [(none)]> SHOW DATABASES;
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | G3B2BDD            |
+    | information_schema |
+    | mysql              |
+    | performance_schema |
+    +--------------------+
+    4 rows in set (0.000 sec)
+
+
+
+
 

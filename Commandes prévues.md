@@ -15,4 +15,4 @@ Pour copier la clé publique SSH sur une autre VM
     ssh-copy-id username@host-ip-address
 
 Création du nom de domaine personnalisé
-https://docs.microsoft.com/fr-fr/azure/virtual-machines/custom-domain
+https://docs.microsoft.com/en-us/azure/virtual-machines/custom-domain

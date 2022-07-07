@@ -16,3 +16,6 @@ Pour copier la clé publique SSH sur une autre VM
 
 Création du nom de domaine personnalisé
 https://docs.microsoft.com/en-us/azure/virtual-machines/custom-domain
+
+PHP
+https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/

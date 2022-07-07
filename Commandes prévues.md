@@ -14,3 +14,5 @@ Pour créer les nouvelles clés sur le server Admin pour les serveurs Appli et B
 Pour copier la clé publique SSH sur une autre VM
     ssh-copy-id username@host-ip-address
 
+Création du nom de domaine personnalisé
+https://docs.microsoft.com/en-us/azure/virtual-machines/custom-domain

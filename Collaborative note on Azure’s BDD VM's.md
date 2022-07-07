@@ -127,41 +127,47 @@ Table d'adressage IP :
 ___
 
 ## ***3 - Plan d'action :<a name="Actplan"></a>***
+<br></br>
+- [x] Planifier les actions et quelles ressources mettre en place
+<br></br> 
+- [x] Créer le schéma réseau
+<br></br>
+- [x] Création des clés SSH
+    - [x] Pour accéder au serveur de rebond
+    - [x] Depuis le serveur de rebond vers VM Appli
+    - [x] Depuis le serveur de rebond vers VM BDD 
+<br></br>
+- [x] Créer 3 VMs pour NextCloud
+    - [x] 1 VM Admin
+    - [x] 1 VM BDD
+    - [x] 1 VM Applicative
+<br></br>
 
-        - Planifier les actions et quelles ressources mettre en place
- 
-        - Créer le schéma réseau
-
-        - Création des clés SSH
-
-        - Créer 3 VMs pour NextCloud
-            - 1 VM Admin
-            - 1 VM BDD
-            - 1 VM Applicative
-
-        - Configurer les accès au réseau des VMs
-            - Modifier les ports d'accès (10022 au lieu de 22/ 10080 au lieu de 80...)
-            - Couper l'accès SSH public aux VMs Appli et BDD
-
-        - Installation des prérequis (PHP, Apache)
-        Créer une base de données MariaDB sur la VM BDD
-        Déployer NextCloud sur la VM Applicative
-
-        - Créer les utilisateurs/groupes et accorder les droits d’accès
- 
-        - Tester la structure
-            - Accès au portail web NextCloud en tant que "user" (http/10080)
-            - Vérification du logging d'Azure Sentinel
-            - Test de disponibilité Application Insights
-
-        - Accès à l'application via TLS (HTTPS)
-
-        - Création des différentes documentations
-
-        - Répondre au client
-
-
-Commentaire : représenter le réseau à déployer sous forme de tableau (adressages IPs, ports, etc)
+- [ ] Configurer les accès au réseau des VMs
+  - [ ] Modifier les ports d'accès 
+    - [x] 10022 au lieu de 22
+    - [ ] 10080 au lieu de 80...)
+    - [x] Couper l'accès SSH public aux VMs Appli et BDD
+<br></br>
+- [ ] Installation des prérequis
+    - [ ] PHP8.0
+    - [ ] Apache2
+    - [x] Créer une base de données MariaDB sur la VM BDD
+    - [ ] Déployer NextCloud sur la VM Applicative
+<br></br>
+- [ ] Créer les utilisateurs/groupes et accorder les droits d’accès
+<br></br>
+- [ ] Tester la structure
+    - [ ] Accès au portail web NextCloud en tant que "user" (http/10080)
+    - [ ] Vérification du logging d'Azure Sentinel
+    - [ ] Test de disponibilité Application Insights
+<br></br>
+- [ ] Accès à l'application via TLS (HTTPS)
+<br></br>
+- [ ] Création des différentes documentations
+<br></br>
+- [ ] Répondre au client
+<br></br>
 
 [Retour au sommaire](#home)
 

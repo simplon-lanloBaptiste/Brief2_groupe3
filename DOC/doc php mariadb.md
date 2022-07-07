@@ -52,6 +52,23 @@ groupe3@VMBDDB2G3:~$ sudo systemctl status mariadb
 ```
 Création de la base de données :  
 
+Il faut lancer une instance mysql
+```console
+groupe3@VMBDDB2G3:~$ sudo mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 41
+Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1 Ubuntu 20.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+```
+Nous ne sommes plus en "bash" (groupe3@VMBDDB2G3:~$), désormais la console ne comprend que les commandes MySQL.  
+
+Puis créer la base de données (nommée G3B2BDD dans notre cas)  
+
 ```console
 MariaDB [(none)]> CREATE DATABASE G3B2BDD;
 Query OK, 1 row affected (0.000 sec)

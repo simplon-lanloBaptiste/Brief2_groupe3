@@ -117,9 +117,9 @@ Table d'adressage IP :
 
 ## ***3 - Plan d'action :<a name="Actplan"></a>***
 
-        - Planifier les actions et quelles ressources mettre en place
+- [x] Planifier les actions et quelles ressources mettre en place
  
-        - Créer le schéma réseau
+- [x] Créer le schéma réseau
 
         - Création des clés SSH
 

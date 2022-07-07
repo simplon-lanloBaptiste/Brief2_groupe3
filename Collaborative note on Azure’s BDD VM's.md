@@ -145,7 +145,7 @@ ___
   - [ ] Modifier les ports d'accès 
     - [x] 10022 au lieu de 22
     - [ ] 10080 au lieu de 80...)
-    - [ ] Couper l'accès SSH public aux VMs Appli et BDD
+    - [x] Couper l'accès SSH public aux VMs Appli et BDD
 <br></br>
 - [ ] Installation des prérequis
     - [ ] PHP8.0

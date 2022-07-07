@@ -151,6 +151,3 @@ Table d'adressage IP :
 Commentaire : représenter le réseau à déployer sous forme de tableau (adressages IPs, ports, etc)
 
 [Retour au sommaire](#home)
-
-- [] test1
-- [] test2

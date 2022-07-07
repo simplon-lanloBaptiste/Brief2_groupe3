@@ -24,16 +24,16 @@ flowchart TD
         
         subgraph use [usage]
 
-        subgraph bdd1 [BDD]
-            priv_1[Private Network card]
-            virt_1[Premium SSD]
-        end
+            subgraph bdd1 [BDD]
+                priv_1[Private Network card]
+                virt_1[Premium SSD]
+            end
         
-        subgraph app1 [Appli]
-            priv_2[Private Network card]
-            pub_2[Public Network card]
-            virt_2[Large SSD]
-        end
+            subgraph app1 [Appli]
+                priv_2[Private Network card]
+                pub_2[Public Network card]
+                virt_2[Large SSD]
+            end
 
         end
 
@@ -119,12 +119,12 @@ Table d'adressage IP :
  
         - Créer le schéma réseau
 
+        - Création des clés SSH
+
         - Créer 3 VMs pour NextCloud
             - 1 VM Admin
             - 1 VM BDD
             - 1 VM Applicative
-
-        - Création des clés SSH
 
         - Configurer les accès au réseau des VMs
             - Modifier les ports d'accès (10022 au lieu de 22/ 10080 au lieu de 80...)

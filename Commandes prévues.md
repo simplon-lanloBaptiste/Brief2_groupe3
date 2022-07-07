@@ -19,3 +19,10 @@ https://docs.microsoft.com/en-us/azure/virtual-machines/custom-domain
 
 PHP
 https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
+
+Pour info ; lister les modules php installés :
+    php -m
+
+Pour voir la version de php :
+    php -v
+    apt list --installed | grep php

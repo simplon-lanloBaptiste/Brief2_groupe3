@@ -104,15 +104,17 @@ flowchart TD
             - 1 VM BDD
             - 1 VM Applicative
 
-        - Déployer NextCloud sur la VM Applicative, MariaDB sur la VM BDD
-
-        - Créer les utilisateurs/groupes et accorder les droits d’accès
-
-        - Création des clés SSH pour les différents Users
+        - Création des clés SSH
 
         - Configurer les accès au réseau des VMs
             - Modifier les ports d'accès (10022 au lieu de 22/ 10080 au lieu de 80...)
             - Couper l'accès SSH public aux VMs Appli et BDD
+
+        - Installation des prérequis (PHP, Apache)
+        Créer une base de données MariaDB sur la VM BDD
+        Déployer NextCloud sur la VM Applicative
+
+        - Créer les utilisateurs/groupes et accorder les droits d’accès
  
         - Tester la structure
             - Accès au portail web NextCloud en tant que "user" (http/10080)

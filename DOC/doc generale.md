@@ -52,6 +52,15 @@ Si tout est conforme, passer à "review and create", un résumé du produit et d
 
 Si tout s'est bien déroulé, nous allons pouvoir retrouver la vm et les ressources automatiquement créées dans "all resources", en filtrant sur notre "resource group" :  
 
-![filterResGrp]()  
+![filterResGrp](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/filterResourceGroups.png)  
 
-![allResourcesVm]()  
+![allResourcesVm](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/allResourcesGrp3.png)  
+
+Exemple :  
+
+| NAME | TYPE | RESOURCE GROUP | LOCATION | SUBSCRIPTION |
+| --- | --- | --- | --- | --- |
+| VMAdminB2G3 | Virtual machine | brief_2_groupe_3 | West US 3 | Simplon OCC Montpellier ADMIN CLOUD |
+| VMAppliB2G3 | Virtual machine | brief_2_groupe_3 | West US 3 | Simplon OCC Montpellier ADMIN CLOUD |
+
+[Lien vers l'extract en .csv](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/DOC/AzureresourcesBrief2.csv)  

@@ -5,6 +5,8 @@
     Dans le cadre du projet “LifeSense”, nous avons besoin d’échanger des gros fichiers (plusieurs GO). Nous souhaitons le faire sans 
     passer par un drive tierce, de façon simple par un navigateur web, avec des accès sécurisés par utilisateur.
 
+___
+
 ## ***Sommaire<a name="home"></a>***
 
 ***[1 - Topologie du réseau sur Azure en Flowchart](#NetFlo)*** 
@@ -15,7 +17,11 @@
 
 ***[4 - Création d'une VM via le portail Azure](#Crea)***
 
+***[5 - Configuration d'une paire de clé SSH](#SSH)***
+
 ***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
+
+___
 
 ## ***1 - Topologie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
 
@@ -80,6 +86,7 @@ flowchart TD
 
 [Retour au sommaire](#home)
 
+___
 
 ## ***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>
 
@@ -114,6 +121,8 @@ Table d'adressage IP :
 | BDD | 10.0.3.6 | 20.125.132.145 |
 
 [Retour au sommaire](#home)
+
+___
 
 ## ***3 - Plan d'action :<a name="Actplan"></a>***
 
@@ -154,6 +163,7 @@ Commentaire : représenter le réseau à déployer sous forme de tableau (adress
 
 [Retour au sommaire](#home)
 
+___
 
 ## ***4 - Création d'une VM via le portail Azure<a name="Crea"></a>***
 
@@ -226,4 +236,28 @@ Exemple :
 
 [Retour au sommaire](#home)
 
+___
+
+## ***5 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
+
+### ***5-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
+
+![Log](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/log.PNG "Log")
+
+### ***5-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
+
+![keygen](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/ssh-keygen.PNG "keygen")
+
+### ***5-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
+
+![Chemin](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/chemin.PNG "Chemin")
+
+### ***5-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
+
+![Done](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/done.PNG "Done")
+
+
+[Retour au sommaire](#home)
+
+___
 

@@ -38,5 +38,11 @@ Choisir le "virtual network", le "subnet" et l ressource Azure "public ip" (fair
 
 ![network1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/networkInterface.png)  
 
-Choisir quels ports seront autorisés au déploiement de la VM :  
+Choisir quels ports entrants seront autorisés au déploiement de la VM :  
+
+![networkPorts](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/networkSelectPorts.png)  
+
+Si tout est conforme, passer à "review and create", un résumé du produit et du prix est visible (voir screenshot), et toutes les informations relatives à la VM sont résumées plus bas dans la page du portail Azure  
+
+![createVM]()  
 

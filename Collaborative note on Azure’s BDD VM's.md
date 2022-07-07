@@ -17,6 +17,8 @@ ___
 
 ***[4 - Création d'une VM via le portail Azure](#Crea)***
 
+***[5 - Documentation Génération de clé privée/publique](#Keygen)***
+
 ***[5 - Configuration d'une paire de clé SSH](#SSH)***
 
 ***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
@@ -238,21 +240,43 @@ Exemple :
 
 ___
 
+## ***5 - Documentation Génération de clé privée/publique du serveur***
+
+Tout d'abord il faut créer les clés.
+
+![](https://i.imgur.com/DfraNgL.png)
+
+Cliquez alors sur "generate" puis bouger la souris (dans la fenêtre) pour générer la clé. Une fois générée vous obtiendrez alors ceci :
+
+![](https://i.imgur.com/Md00dss.png)
+
+Cliquer sur "sauvegarder clef privée" puis vous pouvez fermer "PuTTYGen", une fois fait rouvrir putty et aller dans "ssh" puis "auth". Cliquez ensuite sur "browse" et mettez le chemin de votre clef.
+
+![](https://i.imgur.com/tpjA6uk.png)
+
+Une fois fait retourner dans "session" et "save".
+
+![](https://i.imgur.com/mfZgiyR.png)
+
+Votre clef privée est parametrée sur putty.
+
+___
+
 ## ***5 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
 
-### ***5-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
+#### ***5-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
 
 ![Log](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/log.PNG "Log")
 
-### ***5-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
+#### ***5-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
 
 ![keygen](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/ssh-keygen.PNG "keygen")
 
-### ***5-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
+#### ***5-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
 
 ![Chemin](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/chemin.PNG "Chemin")
 
-### ***5-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
+#### ***5-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
 
 ![Done](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/done.PNG "Done")
 

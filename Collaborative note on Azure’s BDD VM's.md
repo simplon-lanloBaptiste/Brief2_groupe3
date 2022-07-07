@@ -82,14 +82,34 @@ flowchart TD
 ## ***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>
 
     - 3 VM Ubuntu 20
-          - 2 VM avec 64Gb Standard SDD - Dual Core - 8Gb RAM
-            - 1 VM d'Administration "rebond" pour accéder aux 2 autres en SSH
-          - 1 VM avec 128Gb Premium SSD - Dual Core - 16Gb RAM
-            - VM de Base de Donnée en MariaBD
+            - 1 VM Admin bastion pour accès SSH aux autres VMs avec
+                - 1vCPU
+                - 3.5Gb RAM
+                - 1 disque OS 30Gb standard HDD
+                - 1 disque data 32Gb standard HDD
+            - 1 VM Appli avec 
+                - 2vCPU
+                - 8Gb RAM
+                - 1 disque OS 30Gb standard HDD
+                - 1 disque data 256Gb Premium SSD
+            - 1 VM de Base de Donnée en MariaBD avec
+                - 2vCPU
+                - 16Gb RAM
+                - 1 disque OS 30Gb standard HDD
+                - 1 disque data 32Gb standard SSD
     - 1 virtual network
+        - masque de sous réseau 10.0.3.0/24
     - 1 virtual gateway
-    - 3 adresses IP publiques (1 temporaire)
+    - 3 adresses IP publiques (1 temporaire), cf table ip ci dessous
     - 1 Azure Sentinel  
+
+Table d'adressage IP :  
+
+| VM | Private IP | Public IP |
+| --- | --- | --- |
+| Admin | 10.0.3.4 | 20.150.147.129 |
+| Appli | 10.0.3.5 | 20.118.188.191 |
+| BDD | 10.0.3.6 | 20.125.132.145 |
 
 [Retour au sommaire](#home)
 

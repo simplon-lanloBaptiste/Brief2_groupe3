@@ -21,7 +21,7 @@ Créer un compte admin (user name, password)
 
 Puis choisir les règles de port entrantes (HTTP/HTTPS/SSH)  
 
-## Disques  
+## 1. Disques  
 
 Choisir un type de disque système :  
 
@@ -33,7 +33,7 @@ Puis ajouter au moins 1 disque DATA :
 
 ![dataDiskOptions](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/createDataLUNOptions.png)  
 
-## Réseau  
+## 2. Réseau  
 Choisir le "virtual network", le "subnet" et l ressource Azure "public ip" (faire "new" si pas de ressource déjà existante)  
 
 ![network1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/networkInterface.png)  
@@ -42,7 +42,16 @@ Choisir quels ports entrants seront autorisés au déploiement de la VM :
 
 ![networkPorts](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/networkSelectPorts.png)  
 
+## 3. Création de la VM
+
 Si tout est conforme, passer à "review and create", un résumé du produit et du prix est visible (voir screenshot), et toutes les informations relatives à la VM sont résumées plus bas dans la page du portail Azure  
 
-![createVM]()  
+![createVM](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/vmReviewAndCreate.png)  
 
+## 4. Vérification des ressources  
+
+Si tout s'est bien déroulé, nous allons pouvoir retrouver la vm et les ressources automatiquement créées dans "all resources", en filtrant sur notre "resource group" :  
+
+![filterResGrp]()  
+
+![allResourcesVm]()  

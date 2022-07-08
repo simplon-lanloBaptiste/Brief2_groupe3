@@ -29,10 +29,16 @@ Ensuite la machine sera normalement inaccessible tant que le port 10022 n'est pa
 
 ![resNSG](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen0_port22Change1.png)  
 
-Création de la règle :  
+Création de la règle :  cliquer sur +Add  
 
 ![creaRule1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen1_port22ChangeCreateRule1.png)  
 
+Il faut changer le port "destination" en 10022 :  
+
 ![creaRule2](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen2_port22ChangeCreateRule2.png)  
 
+Ensuite changer la "priority" (plus le nombre est bas, plus la règle est prioritaire) et nommer la nouvelle règle :  
+
 ![creaRule3](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen2_port22ChangeCreateRule3.png)  
+
+Une fois que tous les champs sont remplis, cliquer sur "Add"  

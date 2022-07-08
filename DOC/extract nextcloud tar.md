@@ -1,8 +1,10 @@
 Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible via Filezilla (nous mettrons l'archive dans le /home)  
 
-![fileZillaConnect]()
-![FileZillaPut]()
-![FileZillaCheck]()
+![fileZillaConnect](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen0_sftpPutWithFileZilla.png)  
+
+![FileZillaPut](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen1_FilezillaCopyFile.png)  
+
+![FileZillaCheck](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen2_FilezillaFileCopied.png)  
 
 Récupérer le chemin absolu vers l'archive à déplacer vers la vm Appli :  
 ```console

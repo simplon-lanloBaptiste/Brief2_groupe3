@@ -1,3 +1,29 @@
+Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible via Filezilla (nous mettrons l'archive dans le /home)  
+
+![fileZillaConnect]()
+![FileZillaPut]()
+![FileZillaCheck]()
+
+Récupérer le chemin absolu vers l'archive à déplacer vers la vm Appli :  
+```console
+groupe3@VMAdminB2G3:~/ncfiles$ readlink -f latest.tar.bz2
+/home/groupe3/ncfiles/latest.tar.bz2
+```  
+Puis se connecter en sftp à la VM Appli et uploader l'archive vers le /home de la vm distante :  
+```console
+groupe3@VMAdminB2G3:~/ncfiles$ sftp groupe3@10.0.3.5
+Connected to 10.0.3.5.
+sftp> put /home/groupe3/ncfiles/latest.tar.bz2
+Uploading /home/groupe3/ncfiles/latest.tar.bz2 to /home/groupe3/latest.tar.bz2
+/home/groupe3/ncfiles/latest.tar.bz2                                       100%  118MB  87.8MB/s   00:01
+```
+Ensuite se connecter à la VM Appli et vérifier l'existence du fichier dans le /home :  
+```console
+groupe3@VMAppliB2G3:~$ ls -lrt|grep tar
+-rwxrw-r-- 1 groupe3 groupe3 123445625 Jul  8 11:49 latest.tar.bz2
+```
+
+
 extraction des fichiers nextCloud avec la commande "tar" :  (x pour extract, v pour verbose : donne un récap des actions de la commande en temps réel, f pour "file", -C pour indiquer le chemin vers où extraire le fichier)  
 
 ```console

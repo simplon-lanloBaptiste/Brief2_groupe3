@@ -27,12 +27,12 @@ Port 10022
 ```  
 Ensuite la machine sera normalement inaccessible tant que le port 10022 n'est pas autorisé via Azure.  Pour l'autoriser, il va falloir ajouter une règle dans la ressource "network security group" associée à la VM Admin :  
 
-![resNSG]()  
+![resNSG](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen0_port22Change1.png)  
 
 Création de la règle :  
 
-![creaRule1]()  
-![creaRule2]()  
-![creaRule3]()  
+![creaRule1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen1_port22ChangeCreateRule1.png)  
 
+![creaRule2](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen2_port22ChangeCreateRule2.png)  
 
+![creaRule3](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen2_port22ChangeCreateRule3.png)  

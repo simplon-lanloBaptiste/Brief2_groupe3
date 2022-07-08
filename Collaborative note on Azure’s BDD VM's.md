@@ -23,7 +23,7 @@ ___
 
 ***[7 - Installation de PHP](#PHP)***
 
-***[8. Installation MariaDB](#MDB)***
+***[8 - Installation MariaDB](#MDB)***
 
 ***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
 
@@ -315,7 +315,7 @@ Ensuite nous avons identifié les modules prérequis à l'installation de NextCl
 
     sudo apt install php8.0-[nom du module]
 
-## ***8. Installation MariaDB<a name="MDB"></a>***
+## ***8 - Installation MariaDB<a name="MDB"></a>***
 Sur la vm BDD  
 
     sudo apt update

@@ -2,12 +2,35 @@
 
 ```console
 sudo -u www-data php occ maintenance:install 
-
-
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin1234';
-
-sudo -u www-data php occ  maintenance:install --database="mysql" --database-name="nextcloudDB" --database-user="admin" --database-pass="admin1234" --database-host="10.0.3.6" --database-port="22" --admin-user="admin" --admin-pass="admin1234" --data-dir="/var/www/nextcloud/data"                          
 ```
+
+*Penser à documenter la création du user "admin" et le changement de ses droits via mysql :*
+
+création du user "admin" :  
+```console
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin1234';
+```
+
+connexion à la BDD en root :  
+```console
+root@VMBDDB2G3:/etc/mysql# mysql -u root -p 
+```
+
+rediriger les droits de connexion du user "admin" vers la vm appli :  
+```console
+MariaDB [(none)]> RENAME USER 'admin'@'%' TO 'admin'@'vmapplib2g3.internal.cloudapp.net';
+```
+Attribuer tous les droits à "admin" sur la BDD nextcloudDB :  
+```console 
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON nextcloudDB.* TO 'admin'@'vmapplib2g3.internal.cloudapp.net';  
+```
+
+Commande d'installation de nextCloud :  
+
+```console
+sudo -u www-data php occ  maintenance:install --database="mysql" --database-name="nextcloudDB" --database-user="admin" --database-pass="admin1234" --database-host="10.0.3.6" --database-port="3306" --admin-user="admin" --admin-pass="admin1234" --data-dir="/var/www/nextcloud/data"                          
+```
+
 Ajout du port 8080 dans les fichiers conf d'apache2 :  
 
   483  vi /etc/apache2/sites-enabled/nextcloud.conf  
@@ -24,3 +47,6 @@ http://20.118.188.191:8080/nextcloud/index.php/login
 penser à créer fqdn pour accès à distance  
 
 https://docs.microsoft.com/en-us/azure/virtual-machines/create-fqdn
+
+Pour ajouter des "users" :  
+https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#user-commands

@@ -33,7 +33,7 @@ ___
 
 ***[12 - Transfert et extraction nextcloud.tar.bz2](#Nexttar)***
 
-***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
+***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues.md)***
 
 ___
 

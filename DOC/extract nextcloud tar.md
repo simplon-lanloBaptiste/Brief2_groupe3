@@ -11,8 +11,10 @@ nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/CreateBlockBlobO
 nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/CopyState.php
 nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/GetBlobPropertiesResult.php
 [...]
-```
+```  
+
 Quand la console rend la main, se placer dans le bon répertoire et vérifier la présence des fichiers :  
+
 ```console
 groupe3@VMAppliB2G3:/var/www/nextcloud/nextcloud$ ls -la
 total 176
@@ -44,5 +46,6 @@ drwxr-xr-x  4 nobody nogroup  4096 Jun 20 15:01 resources
 drwxr-xr-x  3 nobody nogroup  4096 Jun 20 15:01 themes
 drwxr-xr-x  2 nobody nogroup  4096 Jun 20 15:07 updater
 -rw-r--r--  1 nobody nogroup   382 Jun 20 15:28 version.php
-```
+```  
+
 

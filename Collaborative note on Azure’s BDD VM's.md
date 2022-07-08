@@ -17,13 +17,17 @@ ___
 
 ***[4 - Création d'une VM via le portail Azure](#Crea)***
 
-***[5 - Documentation Génération de clé privée/publique](#Keygen)***
+***[5 - Pour changer le port 22 en 10022](#Port22)***
 
-***[6 - Configuration d'une paire de clé SSH](#SSH)***
+***[6 - Pour changer le port 22 en 10022](#Port80)***
 
-***[7 - Installation de PHP](#PHP)***
+***[7 - Documentation Génération de clé privée/publique](#Keygen)***
 
-***[8 - Installation MariaDB](#MDB)***
+***[8 - Configuration d'une paire de clé SSH](#SSH)***
+
+***[9 - Installation de PHP](#PHP)***
+
+***[10 - Installation MariaDB](#MDB)***
 
 ***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
 
@@ -177,10 +181,10 @@ ___
 
 ___
 
-## ***4 - Création d'une VM via le portail Azure<a name="Crea"></a>***
+## ***04 - Création d'une VM via le portail Azure<a name="Crea"></a>***
 
 
-### ***4-1. Informations basiques***
+### ***04-1 - Informations basiques***
 ___
 All resources > Create > Virtual machine  
 
@@ -200,7 +204,7 @@ Créer un compte admin (user name, password)
 
 Puis choisir les règles de port entrantes (HTTP/HTTPS/SSH)  
 
-### ***4-2. Disques***
+### ***04-2 - Disques***
 ___
 Choisir un type de disque système :  
 
@@ -212,7 +216,7 @@ Puis ajouter au moins 1 disque DATA :
 
 ![dataDiskOptions](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/createDataLUNOptions.png)  
 
-### ***4-3. Réseau***
+### ***04-3 - Réseau***
 ___
 Choisir le "virtual network", le "subnet" et l ressource Azure "public ip" (faire "new" si pas de ressource déjà existante)  
 
@@ -222,13 +226,13 @@ Choisir quels ports entrants seront autorisés au déploiement de la VM :
 
 ![networkPorts](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/networkSelectPorts.png)  
 
-### ***4-4. Création de la VM***
+### ***04-4 - Création de la VM***
 ___
 Si tout est conforme, passer à "review and create", un résumé du produit et du prix est visible (voir screenshot), et toutes les informations relatives à la VM sont résumées plus bas dans la page du portail Azure  
 
 ![createVM](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/vmReviewAndCreate.png)  
 
-### ***4-5. Vérification des ressources***
+### ***04-5 - Vérification des ressources***
 ___
 Si tout s'est bien déroulé, nous allons pouvoir retrouver la vm et les ressources automatiquement créées dans "all resources", en filtrant sur notre "resource group" :  
 
@@ -250,7 +254,68 @@ Exemple :
 
 ___
 
-## ***5 - Documentation Génération de clé privée/publique du serveur<a name="Keygen"></a>***
+## ***05 - Pour changer le port 22 en 10022 :<a name="port22"></a>
+
+Editer le fichier
+
+    /etc/ssh/sshd_config  
+
+Retrouver la ligne qui contient "Port 22" (sous VIM, faire une recherche avec /)  
+
+Enlever le # en début de ligne (il sert à "commenter" une ligne, elle ne sera donc pas prise en compte tant que "#" est là)
+
+Remplacer la ligne par "Port 10022"  
+
+    groupe3@VMAdminB2G3:~$ cat /etc/ssh/sshd_config
+    # $OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+    # This is the sshd server system-wide configuration file.  See
+    # sshd_config(5) for more information.
+
+    # This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+    # The strategy used for options in the default sshd_config shipped with
+    # OpenSSH is to specify options with their default value where
+    # possible, but leave them commented.  Uncommented options override the
+    # default value.
+
+    Include /etc/ssh/sshd_config.d/*.conf
+
+    Port 10022
+    #AddressFamily any
+    #ListenAddress 0.0.0.0
+    #ListenAddress ::
+  
+Ensuite la machine sera normalement inaccessible tant que le port 10022 n'est pas autorisé via Azure. Pour l'autoriser, il va falloir ajouter une règle dans la ressource "network security group" associée à la VM Admin :
+
+![resNSG](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen0_port22Change1.png)  
+
+Création de la règle : cliquer sur +Add
+
+![creaRule1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen1_port22ChangeCreateRule1.png)  
+
+Il faut changer le port "destination" en 10022 :
+
+![creaRule2](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen2_port22ChangeCreateRule2.png)  
+
+Ensuite changer la "priority" (plus le nombre est bas, plus la règle est prioritaire) et nommer la nouvelle règle :
+
+![creaRule3](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen2_port22ChangeCreateRule3.png)  
+
+Une fois que tous les champs sont remplis, cliquer sur "Add"
+
+[Retour au sommaire](#home)
+
+___
+
+## ***06 - Pour changer le port 22 en 10022<a name="Port80"></a>***
+
+
+
+[Retour au sommaire](#home)
+
+___
+## ***07 - Documentation Génération de clé privée/publique du serveur<a name="Keygen"></a>***
 
 Tout d'abord il faut créer les clés.
 
@@ -272,21 +337,21 @@ Votre clef privée est parametrée sur putty.
 
 ___
 
-## ***6 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
+## ***08 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
 
-#### ***6-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
+#### ***08-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
 
 ![Log](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/log.PNG "Log")
 
-#### ***6-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
+#### ***08-2 - Pour créer une paire de clés SSH sur ma Vm, je vais rentrer la commande ssh-keygen.***
 
 ![keygen](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/ssh-keygen.PNG "keygen")
 
-#### ***6-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
+#### ***08-3 - Je vais ensuite lui indiquer le chemin où je veux sauvgarder ma clé.***
 
 ![Chemin](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/chemin.PNG "Chemin")
 
-#### ***6-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
+#### ***08-4 - Une fois le bon chemin donné, il est demandé d'entrer une phrase secrète, je peux également laisser la zone vide si je ne souhaite pas utiliser de phrase secrète.***
 
 ![Done](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/done.PNG "Done")
 
@@ -295,7 +360,7 @@ ___
 
 ___
 
-## ***7 - Installation de PHP :<a name="PHP"></a>***
+## ***09 - Installation de PHP :<a name="PHP"></a>***
 
 En suivant le [guide d'installation de NextCloud](https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation), nous avons dans un premier temps identifié quels composants / programmes étaient déjà installés. PHP est présent en version 1, nous avons choisi d'installer la version la plus récente en 8.0  en suivant [ce guide](https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/) qui explique bien les prérequis et les étapes d'installation de PHP et de ses diffétents modules.  
 
@@ -315,7 +380,7 @@ Ensuite nous avons identifié les modules prérequis à l'installation de NextCl
 
     sudo apt install php8.0-[nom du module]
 
-## ***8 - Installation MariaDB<a name="MDB"></a>***
+## ***10 - Installation MariaDB<a name="MDB"></a>***
 Sur la vm BDD  
 
     sudo apt update

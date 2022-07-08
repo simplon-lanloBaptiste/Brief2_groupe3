@@ -19,7 +19,7 @@ ___
 
 ***[5 - Pour changer le port 22 en 10022](#Port22)***
 
-***[6 - Pour changer le port 22 en 10022](#Port80)***
+***[6 - Pour changer le port 80 en 10080](#Port80)***
 
 ***[7 - Documentation Génération de clé privée/publique](#Keygen)***
 
@@ -28,6 +28,10 @@ ___
 ***[9 - Installation de PHP](#PHP)***
 
 ***[10 - Installation MariaDB](#MDB)***
+
+***[11 - Création et configuration nextcloud.conf](#Nextconf)***
+
+***[12 - Transfert et extraction nextcloud.tar.bz2](#Nexttar)***
 
 ***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues)***
 
@@ -380,7 +384,15 @@ Ensuite nous avons identifié les modules prérequis à l'installation de NextCl
 
     sudo apt install php8.0-[nom du module]
 
+
+[Retour au sommaire](#home)
+
+___
+
+
 ## ***10 - Installation MariaDB<a name="MDB"></a>***
+
+### ***10-1 - Installation MariaDB(server) et MySQL***
 Sur la vm BDD  
 
     sudo apt update
@@ -395,14 +407,17 @@ Sur la vm BDD
 
 ![installMariaDB4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/0_screen4_InstallMariaDBLastSteps.png)  
 
+### ***10-2 - Démarrage MariaDB***
 
-démarrage du service MariaDB
+démarrage du démon MariaDB
 
     groupe3@VMBDDB2G3:~$ sudo systemctl start mariadb
 
 check du démarrage du service MariaDB :
 
     groupe3@VMBDDB2G3:~$ sudo systemctl status mariadb
+
+### ***10-3 - Création DB***
 
 Création de la base de données :  
 
@@ -419,7 +434,7 @@ Il faut lancer une instance MySQL
 
     MariaDB [(none)]>
 
-Nous ne sommes plus en "bash" (groupe3@VMBDDB2G3:~$), désormais la console ne comprend que les commandes MySQL.  
+Nous ***ne sommes plus en "bash"*** (groupe3@VMBDDB2G3:~$), désormais la console ne comprend ***que les commandes MySQL.***  
 
 Puis créer la base de données (nommée G3B2BDD dans notre cas)  
 
@@ -438,6 +453,179 @@ Puis créer la base de données (nommée G3B2BDD dans notre cas)
     4 rows in set (0.000 sec)
 
 
+[Retour au sommaire](#home)
 
+___
+
+
+## ***11 - Apache Web server configuration sur VM Appli<a name="Nextconf"></a>***
+
+### ***11-1 - Création du fichier de configuration***
+
+Créer le fichier "nextcloud.conf" à l'aide d'un "touch" et la commande 
+
+    sudo touch /etc/apache2/sites-available/nextcloud.conf
+
+"sudo" car /etc/ est protégé.
+
+![Nexcloud.conf 1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%201.png)
+
+### ***11-2 - Configuration du fichier de configuration***
+
+Utiliser VIM pour éditer le nouveau fichier "nextcloud.conf" et rajouter les informations nécessaire en changeant, si besoin, les chemins d'accès:
+
+    Alias /nextcloud "/var/www/nextcloud/"
+
+    <Directory /var/www/nextcloud/>
+      Require all granted
+      AllowOverride All
+      Options FollowSymLinks MultiViews
+
+        <IfModule mod_dav.c>
+            Dav off
+        </IfModule>
+    </Directory>
+
+A l'aide cette commande :
+
+    vim /etc/apache2/sites-available/nextcloud.conf
+
+![Nexcloud.conf 2](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%202.png)
+
+![Nexcloud.conf 3](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%203.png)
+
+### ***11-3 - Création du dossier pré-requis à l'installation***
+
+Créer le dossier nextcloud dans "var/www/" avec "sudo" car protégé et vérification de sa présence et des droits avec "ls -la".
+
+    sudo mkdir var/www/nextcloud
+
+![Nexcloud.conf 4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%204.png)
+
+### ***11-4 - Intégration au démon***
+
+Activer le module "mod_rewrite" avec la commande : (en sudo à nouveau pour permissions)
+
+    sudo a2enmod rewrite
+
+Ce qui permet de mettre à jour le lien symbolique d'Apache vers sa bibliothèque.
+
+![Nexcloud.conf 5](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%205.png)
+
+Redémarer le démon Apache avec la commande :
+
+    sudo systemctl reload apache2
+
+![Nexcloud.conf 6](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%206.png)
+
+Vérifier que le démon tourne bien
+
+    ps -ef | grep apache
+
+![Nexcloud.conf 7](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%207.png)
+
+
+(Tutoriel suivi : https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#additional-apache-configurations)
+
+
+
+[Retour au sommaire](#home)
+
+___
+
+## ***12 - Transfert et extraction nextcloud.tar.bz2<a name="Nexttar"></a>***
+
+### ***12-1 - Transfert user->VM Admin***
+
+Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible via Filezilla (nous mettrons l'archive dans le /home)  
+
+![fileZillaConnect](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen0_sftpPutWithFileZilla.png)  
+
+![FileZillaPut](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen1_FilezillaCopyFile.png)  
+
+![FileZillaCheck](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen2_FilezillaFileCopied.png)  
+
+### ***12-2 - Transfert VM Admin -> VM Appli*** 
+
+Depuis la console vm Admin, récupérer le chemin absolu vers l'archive à déplacer vers la vm Appli :  
+
+    groupe3@VMAdminB2G3:~/ncfiles$ readlink -f latest.tar.bz2
+    /home/groupe3/ncfiles/latest.tar.bz2
+ 
+Puis se connecter en sftp à la VM Appli et uploader l'archive vers le /home de la vm distante :  
+
+    groupe3@VMAdminB2G3:~/ncfiles$ sftp groupe3@10.0.3.5
+    Connected to 10.0.3.5.
+    sftp> put /home/groupe3/ncfiles/latest.tar.bz2
+    Uploading /home/groupe3/ncfiles/latest.tar.bz2 to /home/groupe3/latest.tar.bz2
+    /home/groupe3/ncfiles/latest.tar.bz2                                       100%  118MB  87.8MB/s   00:01
+
+Ensuite se connecter à la VM Appli et vérifier l'existence du fichier dans le /home :  
+
+    groupe3@VMAppliB2G3:~$ ls -lrt|grep tar
+    -rwxrw-r-- 1 groupe3 groupe3 123445625 Jul  8 11:49 latest.tar.bz2
+ 
+Si besoin changer les droits d'accès avec chmod
+
+Ensuite déplacer l'archive vers sa destination. Comme nous souhaitons déployer NextCloud dans /var/www/ qui est normalement réservé système, ne pas oublier le sudo
+
+    groupe3@VMAppliB2G3:~$ sudo mv ./latest.tar.bz2 /var/www/
+    groupe3@VMAppliB2G3:~$ ls /var/www/ | grep tar
+    latest.tar.bz2
+
+### ***12-3 - Extraction du tar.bz2***
+
+Nous poursuivons avec l'extraction des fichiers nextCloud en utilisant la commande "tar" :
+(x pour extract, v pour verbose : donne un récap des actions de la commande en temps réel, f pour "file", -C pour indiquer le chemin vers où extraire le fichier)  
+
+    sudo tar xvf ./latest.tar.bz2 -C /var/www/nextcloud/
+    [...]
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/AccessCondition.php
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/DeleteBlobOptions.php
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/UndeleteBlobOptions.php
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/CreateContainerOptions.php
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/CreateBlockBlobOptions.php
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/CopyState.php
+    nextcloud/3rdparty/microsoft/azure-storage-blob/src/Blob/Models/GetBlobPropertiesResult.php
+    [...]
+
+
+Quand la console rend la main, se placer dans le bon répertoire et vérifier la présence des fichiers :  
+
+    groupe3@VMAppliB2G3:/var/www/nextcloud/nextcloud$ ls -la
+    total 176
+    drwxr-xr-x 14 nobody nogroup  4096 Jun 20 15:29 .
+    drwxr-xr-x  3 root   root     4096 Jul  8 09:27 ..
+    -rw-r--r--  1 nobody nogroup  3253 Jun 20 15:01 .htaccess
+    -rw-r--r--  1 nobody nogroup   101 Jun 20 15:01 .user.ini
+    drwxr-xr-x 43 nobody nogroup  4096 Jun 20 15:29 3rdparty
+    -rw-r--r--  1 nobody nogroup 19327 Jun 20 15:01 AUTHORS
+    -rw-r--r--  1 nobody nogroup 34520 Jun 20 15:01 COPYING
+    drwxr-xr-x 48 nobody nogroup  4096 Jun 20 15:07 apps
+    drwxr-xr-x  2 nobody nogroup  4096 Jun 20 16:01 config
+    -rw-r--r--  1 nobody nogroup  4095 Jun 20 15:01 console.php
+    drwxr-xr-x 22 nobody nogroup  4096 Jun 20 15:41 core
+    -rw-r--r--  1 nobody nogroup  6260 Jun 20 15:01 cron.php
+    drwxr-xr-x  2 nobody nogroup 12288 Jun 20 15:01 dist
+    -rw-r--r--  1 nobody nogroup   156 Jun 20 15:01 index.html
+    -rw-r--r--  1 nobody nogroup  3456 Jun 20 15:01 index.php
+    drwxr-xr-x  6 nobody nogroup  4096 Jun 20 15:01 lib
+    -rw-r--r--  1 nobody nogroup   283 Jun 20 15:01 occ
+    drwxr-xr-x  2 nobody nogroup  4096 Jun 20 15:01 ocm-provider
+    drwxr-xr-x  2 nobody nogroup  4096 Jun 20 15:01 ocs
+    drwxr-xr-x  2 nobody nogroup  4096 Jun 20 15:01 ocs-provider
+    -rw-r--r--  1 nobody nogroup  3139 Jun 20 15:01 public.php
+    -rw-r--r--  1 nobody nogroup  5340 Jun 20 15:01 remote.php
+    drwxr-xr-x  4 nobody nogroup  4096 Jun 20 15:01 resources
+    -rw-r--r--  1 nobody nogroup    26 Jun 20 15:01 robots.txt
+    -rw-r--r--  1 nobody nogroup  2452 Jun 20 15:01 status.php
+    drwxr-xr-x  3 nobody nogroup  4096 Jun 20 15:01 themes
+    drwxr-xr-x  2 nobody nogroup  4096 Jun 20 15:07 updater
+    -rw-r--r--  1 nobody nogroup   382 Jun 20 15:28 version.php
+    [...]
+
+[Retour au sommaire](#home)
+
+___
 
 

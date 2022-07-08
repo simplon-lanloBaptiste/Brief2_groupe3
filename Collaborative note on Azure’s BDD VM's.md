@@ -161,11 +161,11 @@ ___
     - [ ] 10080 au lieu de 80...)
     - [x] Couper l'accès SSH public aux VMs Appli et BDD
 <br></br>
-- [ ] Installation des prérequis
-    - [ ] PHP8.0
-    - [ ] Apache2
+- [x] Installation des prérequis
+    - [x] PHP8.0
+    - [x] Apache2
     - [x] Créer une base de données MariaDB sur la VM BDD
-    - [ ] Déployer NextCloud sur la VM Applicative
+    - [x] Déployer NextCloud sur la VM Applicative
 <br></br>
 - [ ] Créer les utilisateurs/groupes et accorder les droits d’accès
 <br></br>

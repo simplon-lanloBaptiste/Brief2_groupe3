@@ -6,7 +6,7 @@ Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible
 
 ![FileZillaCheck](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen2_FilezillaFileCopied.png)  
 
-Récupérer le chemin absolu vers l'archive à déplacer vers la vm Appli :  
+Depuis la console vm Admin, récupérer le chemin absolu vers l'archive à déplacer vers la vm Appli :  
 ```console
 groupe3@VMAdminB2G3:~/ncfiles$ readlink -f latest.tar.bz2
 /home/groupe3/ncfiles/latest.tar.bz2
@@ -23,10 +23,16 @@ Ensuite se connecter à la VM Appli et vérifier l'existence du fichier dans le 
 ```console
 groupe3@VMAppliB2G3:~$ ls -lrt|grep tar
 -rwxrw-r-- 1 groupe3 groupe3 123445625 Jul  8 11:49 latest.tar.bz2
-```
+```  
+Si besoin changer les droits d'accès avec chmod  
+Ensuite déplacer l'archive vers sa destination, commenous souhaitons déployer nextcloud dans /var/www/ qui est normalement réservé système, ne pas oublier le sudo  
+```console
+groupe3@VMAppliB2G3:~$ sudo mv ./latest.tar.bz2 /var/www/
+groupe3@VMAppliB2G3:~$ ls /var/www/ | grep tar
+latest.tar.bz2
+```  
 
-
-extraction des fichiers nextCloud avec la commande "tar" :  (x pour extract, v pour verbose : donne un récap des actions de la commande en temps réel, f pour "file", -C pour indiquer le chemin vers où extraire le fichier)  
+Nous poursuivons avec l'extraction des fichiers nextCloud en utilisant la commande "tar" :  (x pour extract, v pour verbose : donne un récap des actions de la commande en temps réel, f pour "file", -C pour indiquer le chemin vers où extraire le fichier)  
 
 ```console
 sudo tar xvf ./latest.tar.bz2 -C /var/www/nextcloud/

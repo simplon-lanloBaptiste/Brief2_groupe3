@@ -14,6 +14,7 @@ Created group "admins"
 Création de 4 users admins (Luna, Baptiste, Ryan, Alain)  
 
 La variable d'environnement par défaut pour le mdp nextCloud est "OC_PASS", il faut se connecter en ROOT, sinon la variable d'environnement en question n'est pas gardée.  
+Aller dans le répertoire "nextcloud", dans notre cas : /var/www/nextcloud  
 
 ```console
 export OC_PASS=************

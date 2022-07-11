@@ -12,11 +12,15 @@ groupe3@VMAppliB2G3:/var/www/nextcloud$ sudo -u www-data php occ group:add admin
 Created group "admins"
 ```
 Création de 4 users admins (Luna, Baptiste, Ryan, Alain)  
-Création d'un fichier "mot de passe" en variable d'environnement" :  
 
 La variable d'environnement par défaut pour le mdp nextCloud est "OC_PASS", il faut se connecter en ROOT, sinon la variable d'environnement en question n'est pas gardée.  
 
 ```console
 export OC_PASS=************
-ssu -s /bin/sh www-data -c 'php occ user:add --password-from-env - --display-name="Alain" alain'
+su -s /bin/sh www-data -c 'php occ user:add --password-from-env --display-name="Alain" alain'
+```  
+Pour ajouter, puis vérifier l'appartenance a un groupe :  
+```console
+sudo -u www-data php occ group:adduser admins alain
+sudo -u www-data php occ group:list
 ```

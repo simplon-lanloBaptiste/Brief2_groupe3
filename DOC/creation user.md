@@ -24,4 +24,16 @@ Pour ajouter, puis vérifier l'appartenance a un groupe :
 ```console
 sudo -u www-data php occ group:adduser admins alain
 sudo -u www-data php occ group:list
+```  
+Nous pouvons retrouver les users créés dans la VM BDD :  
+
+```console
+MariaDB [nextcloudDB]> select UID from oc_accounts;
++----------+
+| UID      |
++----------+
+| Ryan     |
+| alain    |
+| baptiste |
++----------+
 ```

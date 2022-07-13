@@ -510,7 +510,7 @@ Créer le fichier "nextcloud.conf" à l'aide d'un "touch" et la commande
 
 Utiliser VIM pour éditer le nouveau fichier "nextcloud.conf" et rajouter les informations nécessaire en changeant, si besoin, les chemins d'accès:  
 
-<VirtualHost *:8080>
+    <VirtualHost *:8080>
         DocumentRoot /var/www
         Alias /nextcloud "/var/www/nextcloud/"
         <Directory /var/www/nextcloud/>
@@ -525,7 +525,9 @@ Utiliser VIM pour éditer le nouveau fichier "nextcloud.conf" et rajouter les in
         </Directory>
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
+    </VirtualHost>
+
+
 
 A l'aide cette commande :
 
@@ -539,7 +541,31 @@ ___
 
 ### ***11-3 - Pour changer le port 88 en 8080***
 
+Nous avons changé le nom de port dans le fichiers de configuration nextCloud cité précédemment : /etc/apache2/sites-available/nextcloud.conf et ajouté une règle de traffic entrant dans le network security group correspondant dans l'interface d'Azure :  
 
+
+    <VirtualHost *:8080>
+    DocumentRoot /var/www
+    Alias /nextcloud "/var/www/nextcloud/"
+
+Puis nous avons ajouté la ligne "Listen 8080" dans le fichier de conf "/etc/apache2/ports.conf" pour dire au daemon apache d'écouter sur le bon port :  
+```console
+# If you just change the port or add more ports here, you will likely also
+# have to change the VirtualHost statement in
+# /etc/apache2/sites-enabled/000-default.conf
+
+Listen 8080
+
+<IfModule ssl_module>
+        Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+        Listen 443
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
 
 [Retour au sommaire](#home)
 

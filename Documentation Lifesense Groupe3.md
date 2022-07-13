@@ -504,9 +504,17 @@ Créer le fichier "nextcloud.conf" à l'aide d'un "touch" et la commande
 
 "sudo" car /etc/ est protégé.
 
-![Nexcloud.conf 1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%201.png)
+![Nexcloud.conf 1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%201.png)  
 
-### ***11-2 - Configuration du fichier de configuration***
+### ***11-2 - Création du dossier pré-requis à l'installation***
+
+Créer le dossier nextcloud dans "var/www/" avec "sudo" car protégé et vérification de sa présence et des droits avec "ls -la".
+
+    sudo mkdir var/www/nextcloud
+
+![Nexcloud.conf 4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%204.png)
+
+### ***11-3 - Edition du fichier de configuration***
 
 Utiliser VIM pour éditer le nouveau fichier "nextcloud.conf" et rajouter les informations nécessaire en changeant, si besoin, les chemins d'accès:  
 
@@ -539,7 +547,7 @@ A l'aide cette commande :
 
 ___
 
-### ***11-3 - Pour changer le port 88 en 8080***
+### ***11-4 - Pour changer le port 88 en 8080***
 
 Nous avons changé le nom de port dans le fichiers de configuration nextCloud cité précédemment : /etc/apache2/sites-available/nextcloud.conf et ajouté une règle de traffic entrant dans le network security group correspondant dans l'interface d'Azure :  
 
@@ -566,17 +574,6 @@ Listen 8080
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 ```
-
-[Retour au sommaire](#home)
-
-
-### ***11-4 - Création du dossier pré-requis à l'installation***
-
-Créer le dossier nextcloud dans "var/www/" avec "sudo" car protégé et vérification de sa présence et des droits avec "ls -la".
-
-    sudo mkdir var/www/nextcloud
-
-![Nexcloud.conf 4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%204.png)
 
 ### ***11-5 - Intégration au démon***
 

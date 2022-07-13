@@ -30,6 +30,36 @@ aptget install gdb
 sudo apt-get install -y python2
 ```  
 
+Tous les logs sont configurables ici :  
+
+```console
+groupe3@VMAppliB2G3:/etc/opt/microsoft/omsagent/sysconf/omsagent.d$ ll
+total 88
+drwxr-xr-x 2 root root 4096 Jul 11 13:02 ./
+drwxr-xr-x 3 root root 4096 Jul 11 13:02 ../
+-rw-r--r-- 1 root root 1689 Jun  8 23:28 apache_logs.conf
+-rw-r--r-- 1 root root  774 Jun  8 23:28 auditlog.conf
+-rw-r--r-- 1 root root  893 Jun  8 23:28 change_tracking.conf
+-rw-r--r-- 1 root root  412 Jun  8 23:28 change_tracking_inventory.mof
+-rw-r--r-- 1 root root  117 Jun  8 23:28 collectd.conf
+-rw-r--r-- 1 root root  233 Jun  8 23:28 heartbeat.conf
+-rw-r--r-- 1 root root 1062 Jun  8 23:28 mongo.conf
+-rw-r--r-- 1 root root  576 Jun  8 23:28 monitor.conf
+-rw-r--r-- 1 root root  981 Jun  8 23:28 mysql.conf
+-rw-r--r-- 1 root root 2712 Jun  8 23:28 mysql_logs.conf
+-rw-r--r-- 1 root root  185 Jun  8 23:28 oms.conf
+-rw-r--r-- 1 root root  826 Jun  8 23:28 operation.conf
+-rw-r--r-- 1 root root 1680 Jun  8 23:28 patch_management.conf
+-rw-r--r-- 1 root root  368 Jun  8 23:28 patch_management_inventory.mof
+-rw-r--r-- 1 root root  986 Jun  8 23:28 postgresql_logs.conf
+-rw-r--r-- 1 root root  316 Jun  8 23:28 statsd.conf
+-rw-r--r-- 1 root root  164 Jun  8 23:28 syslog.conf
+-rw-r--r-- 1 root root  252 Jun  8 23:28 telemetry.conf
+-rw-r--r-- 1 root root  192 Jun  8 23:28 update_management.conf
+-rw-r--r-- 1 root root  606 Jun  8 23:28 vmware_esxi.conf
+```
+
+
 ### ***2- Créer une ressource Application Insights liée au workspace Sentinel et ajouter un test de disponibilité pour monitorer l’application***  
 ___
 

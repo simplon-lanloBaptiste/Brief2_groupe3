@@ -4,41 +4,23 @@
 
     Dans le cadre du projet “LifeSense”, nous avons besoin d’échanger des gros fichiers (plusieurs GO). Nous souhaitons le faire sans 
     passer par un drive tierce, de façon simple par un navigateur web, avec des accès sécurisés par utilisateur.
-
 ___
-
 ## ***Sommaire<a name="home"></a>***
-
-***[1 - Topologie du réseau sur Azure en Flowchart](#NetFlo)*** 
-
-***[2 - Ressources nécessaires prévues](#Res)***
-
-***[3 - Plan d'action](#Actplan)***
-
-***[4 - Création d'une VM via le portail Azure](#Crea)***
-
-***[5 - Pour changer le port 22 en 10022](#Port22)***
-
-***[6 - Documentation Génération de clé privée/publique](#Keygen)***
-
-***[7 - Configuration d'une paire de clé SSH](#SSH)***
-
-***[8 - Création d'un user Admin](#userAdmin)***
-
-***[9 - Installation de PHP](#PHP)***
-
-***[10 - Installation MariaDB](#MDB)***
-
-***[11 - Création et configuration nextcloud.conf](#Nextconf)***
-
-***[12 - Transfert et extraction nextcloud.tar.bz2](#Nexttar)***
-
-***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues.md)***
-
+***[1 - Topologie du réseau sur Azure en Flowchart](#NetFlo)***  
+***[2 - Ressources nécessaires prévues](#Res)***  
+***[3 - Plan d'action](#Actplan)***  
+***[4 - Création d'une VM via le portail Azure](#Crea)***  
+***[5 - Pour changer le port 22 en 10022](#Port22)***  
+***[6 - Documentation Génération de clé privée/publique](#Keygen)***  
+***[7 - Configuration d'une paire de clé SSH](#SSH)***  
+***[8 - Création d'un user Admin](#userAdmin)***  
+***[9 - Installation de PHP](#PHP)***  
+***[10 - Installation MariaDB](#MDB)***  
+***[11 - Création et configuration nextcloud.conf](#Nextconf)***  
+***[12 - Transfert et extraction nextcloud.tar.bz2](#Nexttar)***  
+***[X - Commandes prévues](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/Commandes%20pr%C3%A9vues.md)***  
 ___
-
-## ***1 - Topologie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>
-
+## ***1 - Topologie du réseau sur Azure en Flowchart***<a name="NetFlo"></a>  
 ```mermaid
 flowchart TD
 
@@ -97,13 +79,9 @@ flowchart TD
     class usr,app1, prim;
 
 ```
-
-[Retour au sommaire](#home)
-
+[Retour au sommaire](#home)  
 ___
-
-## ***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>
-
+## ***2 - Liste des ressources Azure prévues à déployer***<a name=Res></a>  
     - 3 VM Ubuntu 20
             - 1 VM Admin bastion pour accès SSH aux autres VMs avec
                 - 1vCPU
@@ -124,8 +102,7 @@ ___
         - masque de sous réseau 10.0.3.0/24
     - 1 virtual gateway
     - 3 adresses IP publiques (1 temporaire), cf table ip ci dessous
-    - 1 Azure Sentinel  
-
+    - 1 Azure Sentinel
 Table d'adressage IP :  
 
 | VM | Private IP | Public IP |
@@ -134,12 +111,11 @@ Table d'adressage IP :
 | Appli | 10.0.3.5 | 20.118.188.191 |
 | BDD | 10.0.3.6 | 20.125.132.145 |
 
-[Retour au sommaire](#home)
+[Retour au sommaire](#home)  
+___  
+## ***3 - Plan d'action :<a name="Actplan"></a>***  
+</br>
 
-___
-
-## ***3 - Plan d'action :<a name="Actplan"></a>***
-<br></br>
 - [x] Planifier les actions et quelles ressources mettre en place
 <br></br> 
 - [x] Créer le schéma réseau
@@ -181,14 +157,10 @@ ___
 - [ ] Répondre au client
 <br></br>
 
-[Retour au sommaire](#home)
-
+[Retour au sommaire](#home)  
 ___
-
-## ***04 - Création d'une VM via le portail Azure<a name="Crea"></a>***
-
-
-### ***04-1 - Informations basiques***
+## ***04 - Création d'une VM via le portail Azure<a name="Crea"></a>***  
+### ***04-1 - Informations basiques***  
 ___
 All resources > Create > Virtual machine  
 
@@ -208,7 +180,7 @@ Créer un compte admin (user name, password)
 
 Puis choisir les règles de port entrantes (HTTP/HTTPS/SSH)  
 
-### ***04-2 - Disques***
+### ***04-2 - Disques***  
 ___
 Choisir un type de disque système :  
 
@@ -220,7 +192,7 @@ Puis ajouter au moins 1 disque DATA :
 
 ![dataDiskOptions](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/createDataLUNOptions.png)  
 
-### ***04-3 - Réseau***
+### ***04-3 - Réseau***  
 ___
 Choisir le "virtual network", le "subnet" et l ressource Azure "public ip" (faire "new" si pas de ressource déjà existante)  
 
@@ -256,17 +228,15 @@ Exemple :
 
 [Retour au sommaire](#home)
 
-___
-
 ## ***05 - Pour changer le port 22 en 10022 :<a name="port22"></a>***
-
-Editer le fichier
+___
+Editer le fichier :  
 
     /etc/ssh/sshd_config  
 
 Retrouver la ligne qui contient "Port 22" (sous VIM, faire une recherche avec /)  
 
-Enlever le # en début de ligne (il sert à "commenter" une ligne, elle ne sera donc pas prise en compte tant que "#" est là)
+Enlever le # en début de ligne (il sert à "commenter" une ligne, elle ne sera donc pas prise en compte tant que "#" est là)  
 
 Remplacer la ligne par "Port 10022"  
 
@@ -290,7 +260,7 @@ Remplacer la ligne par "Port 10022"
     #ListenAddress 0.0.0.0
     #ListenAddress ::
   
-Ensuite la machine sera normalement inaccessible tant que le port 10022 n'est pas autorisé via Azure. Pour l'autoriser, il va falloir ajouter une règle dans la ressource "network security group" associée à la VM Admin :
+Ensuite la machine sera normalement inaccessible tant que le port 10022 n'est pas autorisé via Azure. Pour l'autoriser, il va falloir ajouter une règle dans la ressource "network security group" associée à la VM Admin :  
 
 ![resNSG](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/PORTCHANGE/sreen0_port22Change1.png)  
 
@@ -310,9 +280,8 @@ Une fois que tous les champs sont remplis, cliquer sur "Add"
 
 [Retour au sommaire](#home)
 
-___
 ## ***06 - Documentation Génération de clé privée/publique du serveur<a name="Keygen"></a>***
-
+___
 Tout d'abord il faut créer les clés.
 
 ![](https://i.imgur.com/DfraNgL.png)
@@ -329,12 +298,10 @@ Une fois fait retourner dans "session" et "save".
 
 ![](https://i.imgur.com/mfZgiyR.png)
 
-Votre clef privée est parametrée sur putty.
-
-___
+Votre clef privée est parametrée sur putty.  
 
 ## ***07 - Configuration d'une paire de clé SSH<a name="SSH"></a>***
-
+___
 #### ***07-1 - Une fois sur ma machine, je rentre mon login pour me connecter.***
 
 ![Log](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/log.PNG "Log")
@@ -353,9 +320,9 @@ ___
 
 
 [Retour au sommaire](#home)
-___
 
 ## ***08 - Création d'un utilisateur admin :<a name="userAdmin"></a>***
+___
 
 Création du user :  
 ```console
@@ -398,10 +365,9 @@ Désormais le user "alain" peut se connecter via la clé ssh sur la vm Admin
 
 
 [Retour au sommaire](#home)
-___
 
 ## ***9 - Installation de PHP :<a name="PHP"></a>***
-
+___
 En suivant le [guide d'installation de NextCloud](https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation), nous avons dans un premier temps identifié quels composants / programmes étaient déjà installés. PHP est présent en version 1, nous avons choisi d'installer la version la plus récente en 8.0  en suivant [ce guide](https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/) qui explique bien les prérequis et les étapes d'installation de PHP et de ses diffétents modules.  
 
 Les commandes utilisées sont :  
@@ -423,11 +389,8 @@ Ensuite nous avons identifié les modules prérequis à l'installation de NextCl
 
 [Retour au sommaire](#home)
 
-___
-
-
 ## ***10 - Installation MariaDB<a name="MDB"></a>***
-
+___
 ### ***10-1 - Installation MariaDB(server) et MySQL***
 Sur la vm BDD  
 
@@ -491,11 +454,8 @@ Puis créer la base de données (nommée G3B2BDD dans notre cas)
 
 [Retour au sommaire](#home)
 
-___
-
-
 ## ***11 - Apache Web server configuration sur VM Appli<a name="Nextconf"></a>***
-
+___
 ### ***11-1 - Création du fichier de configuration***
 
 Créer le fichier "nextcloud.conf" à l'aide d'un "touch" et la commande 
@@ -604,10 +564,8 @@ Vérifier que le démon tourne bien
 
 [Retour au sommaire](#home)
 
-___
-
 ## ***12 - Transfert et extraction nextcloud.tar.bz2<a name="Nexttar"></a>***
-
+___
 ### ***12-1 - Transfert user->VM Admin***
 
 Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible via Filezilla (nous mettrons l'archive dans le /home)  
@@ -697,8 +655,4 @@ Quand la console rend la main, se placer dans le bon répertoire et vérifier la
     -rw-r--r--  1 nobody nogroup   382 Jun 20 15:28 version.php
     [...]
 
-[Retour au sommaire](#home)
-
-___
-
-
+[Retour au sommaire](#home)  

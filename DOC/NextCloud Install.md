@@ -33,10 +33,9 @@ sudo -u www-data php occ  maintenance:install --database="mysql" --database-name
 
 Ajout du port 8080 dans les fichiers conf d'apache2 :  
 
-  483  vi /etc/apache2/sites-enabled/nextcloud.conf  
-  484  vi /etc/apache2/sites-enabled/000-default.conf  
-  501  sudo vi /etc/apache2/ports.conf  
-  502  vi /etc/apache2/sites-enabled/nextcloud.conf  
+    vi /etc/apache2/sites-enabled/nextcloud.conf   
+    sudo vi /etc/apache2/ports.conf  
+    vi /etc/apache2/sites-enabled/nextcloud.conf  
 
 ajout d'une règle sur vmAppli concernant le port 8080  
 

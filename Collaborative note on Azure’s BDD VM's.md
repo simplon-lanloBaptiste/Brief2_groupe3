@@ -25,6 +25,8 @@ ___
 
 ***[8 - Configuration d'une paire de clé SSH](#SSH)***
 
+***[9 - Création d'un user Admin](#userAdmin)***
+
 ***[9 - Installation de PHP](#PHP)***
 
 ***[10 - Installation MariaDB](#MDB)***
@@ -155,10 +157,10 @@ ___
     - [x] 1 VM Applicative
 <br></br>
 
-- [ ] Configurer les accès au réseau des VMs
-  - [ ] Modifier les ports d'accès 
+- [x] Configurer les accès au réseau des VMs
+  - [x] Modifier les ports d'accès 
     - [x] 10022 au lieu de 22
-    - [ ] 10080 au lieu de 80...)
+    - [x] 10080 au lieu de 80...)
     - [x] Couper l'accès SSH public aux VMs Appli et BDD
 <br></br>
 - [x] Installation des prérequis
@@ -167,10 +169,10 @@ ___
     - [x] Créer une base de données MariaDB sur la VM BDD
     - [x] Déployer NextCloud sur la VM Applicative
 <br></br>
-- [ ] Créer les utilisateurs/groupes et accorder les droits d’accès
+- [x] Créer les utilisateurs/groupes et accorder les droits d’accès
 <br></br>
 - [ ] Tester la structure
-    - [ ] Accès au portail web NextCloud en tant que "user" (http/10080)
+    - [x] Accès au portail web NextCloud en tant que "user" (http/10080)
     - [ ] Vérification du logging d'Azure Sentinel
     - [ ] Test de disponibilité Application Insights
 <br></br>
@@ -258,7 +260,7 @@ Exemple :
 
 ___
 
-## ***05 - Pour changer le port 22 en 10022 :<a name="port22"></a>
+## ***05 - Pour changer le port 22 en 10022 :<a name="port22"></a>***
 
 Editer le fichier
 
@@ -312,7 +314,7 @@ Une fois que tous les champs sont remplis, cliquer sur "Add"
 
 ___
 
-## ***06 - Pour changer le port 22 en 10022<a name="Port80"></a>***
+## ***06 - Pour changer le port 88 en 8080<a name="Port80"></a>***
 
 
 
@@ -361,10 +363,15 @@ ___
 
 
 [Retour au sommaire](#home)
-
 ___
 
-## ***09 - Installation de PHP :<a name="PHP"></a>***
+## ***09 - Création d'un utilisateur admin :<a name="userAdmin"></a>***
+
+
+[Retour au sommaire](#home)
+___
+
+## ***10 - Installation de PHP :<a name="PHP"></a>***
 
 En suivant le [guide d'installation de NextCloud](https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation), nous avons dans un premier temps identifié quels composants / programmes étaient déjà installés. PHP est présent en version 1, nous avons choisi d'installer la version la plus récente en 8.0  en suivant [ce guide](https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/) qui explique bien les prérequis et les étapes d'installation de PHP et de ses diffétents modules.  
 
@@ -390,9 +397,9 @@ Ensuite nous avons identifié les modules prérequis à l'installation de NextCl
 ___
 
 
-## ***10 - Installation MariaDB<a name="MDB"></a>***
+## ***11 - Installation MariaDB<a name="MDB"></a>***
 
-### ***10-1 - Installation MariaDB(server) et MySQL***
+### ***11-1 - Installation MariaDB(server) et MySQL***
 Sur la vm BDD  
 
     sudo apt update
@@ -407,7 +414,7 @@ Sur la vm BDD
 
 ![installMariaDB4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/MARIADB/0_screen4_InstallMariaDBLastSteps.png)  
 
-### ***10-2 - Démarrage MariaDB***
+### ***11-2 - Démarrage MariaDB***
 
 démarrage du démon MariaDB
 
@@ -417,7 +424,7 @@ check du démarrage du service MariaDB :
 
     groupe3@VMBDDB2G3:~$ sudo systemctl status mariadb
 
-### ***10-3 - Création DB***
+### ***11-3 - Création DB***
 
 Création de la base de données :  
 
@@ -458,9 +465,9 @@ Puis créer la base de données (nommée G3B2BDD dans notre cas)
 ___
 
 
-## ***11 - Apache Web server configuration sur VM Appli<a name="Nextconf"></a>***
+## ***12 - Apache Web server configuration sur VM Appli<a name="Nextconf"></a>***
 
-### ***11-1 - Création du fichier de configuration***
+### ***12-1 - Création du fichier de configuration***
 
 Créer le fichier "nextcloud.conf" à l'aide d'un "touch" et la commande 
 
@@ -470,7 +477,7 @@ Créer le fichier "nextcloud.conf" à l'aide d'un "touch" et la commande
 
 ![Nexcloud.conf 1](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%201.png)
 
-### ***11-2 - Configuration du fichier de configuration***
+### ***12-2 - Configuration du fichier de configuration***
 
 Utiliser VIM pour éditer le nouveau fichier "nextcloud.conf" et rajouter les informations nécessaire en changeant, si besoin, les chemins d'accès:
 
@@ -494,7 +501,7 @@ A l'aide cette commande :
 
 ![Nexcloud.conf 3](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%203.png)
 
-### ***11-3 - Création du dossier pré-requis à l'installation***
+### ***12-3 - Création du dossier pré-requis à l'installation***
 
 Créer le dossier nextcloud dans "var/www/" avec "sudo" car protégé et vérification de sa présence et des droits avec "ls -la".
 
@@ -502,7 +509,7 @@ Créer le dossier nextcloud dans "var/www/" avec "sudo" car protégé et vérifi
 
 ![Nexcloud.conf 4](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/main/IMG/Nextcloud.conf%204.png)
 
-### ***11-4 - Intégration au démon***
+### ***12-4 - Intégration au démon***
 
 Activer le module "mod_rewrite" avec la commande : (en sudo à nouveau pour permissions)
 
@@ -533,9 +540,9 @@ Vérifier que le démon tourne bien
 
 ___
 
-## ***12 - Transfert et extraction nextcloud.tar.bz2<a name="Nexttar"></a>***
+## ***13 - Transfert et extraction nextcloud.tar.bz2<a name="Nexttar"></a>***
 
-### ***12-1 - Transfert user->VM Admin***
+### ***13-1 - Transfert user->VM Admin***
 
 Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible via Filezilla (nous mettrons l'archive dans le /home)  
 
@@ -545,7 +552,7 @@ Placer l'archive récupérée sur le site de nextcloud sur la VM Admin, possible
 
 ![FileZillaCheck](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/83f294404fb943065f1dcd4cdcd6abd9724ab86d/IMG/SFTP/screen2_FilezillaFileCopied.png)  
 
-### ***12-2 - Transfert VM Admin -> VM Appli*** 
+### ***13-2 - Transfert VM Admin -> VM Appli*** 
 
 Depuis la console vm Admin, récupérer le chemin absolu vers l'archive à déplacer vers la vm Appli :  
 
@@ -573,7 +580,7 @@ Ensuite déplacer l'archive vers sa destination. Comme nous souhaitons déployer
     groupe3@VMAppliB2G3:~$ ls /var/www/ | grep tar
     latest.tar.bz2
 
-### ***12-3 - Extraction du tar.bz2***
+### ***13-3 - Extraction du tar.bz2***
 
 Nous poursuivons avec l'extraction des fichiers nextCloud en utilisant la commande "tar" :
 (x pour extract, v pour verbose : donne un récap des actions de la commande en temps réel, f pour "file", -C pour indiquer le chemin vers où extraire le fichier)  

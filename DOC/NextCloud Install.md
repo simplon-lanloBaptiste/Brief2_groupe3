@@ -39,6 +39,7 @@ Ajout du port 8080 dans les fichiers conf d'apache2 :
   502  vi /etc/apache2/sites-enabled/nextcloud.conf  
 
 ajout d'une règle sur vmAppli concernant le port 8080  
+
 ![addRule](https://github.com/simplon-lanloBaptiste/Brief2_groupe3/blob/af495c2a20c45b873641f511b99f7f96ac5d4271/IMG/PORTCHANGE/screen_8080_1_AddRule.png)  
 
 Install OK,  

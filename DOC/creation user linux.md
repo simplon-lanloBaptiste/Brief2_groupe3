@@ -3,7 +3,7 @@ Création du user :
 sudo useradd -m -d /home/alain alain
 ```
 
-Pour ajouter le user aux mêmes groupes que notre utilisateur administrateur j'ai créé une boucle qui liste les groupes en question et ajoute l'utilisateur à chacun de ces groupes :  
+Pour ajouter le user aux mêmes groupes que notre utilisateur administrateur nous avons créé une boucle qui liste les groupes en question et ajoute l'utilisateur à chacun de ces groupes :  
 
 ```console
 for groupe in `cat /etc/group | grep -i groupe3 | awk -F ':' '{print $1}'`;do usermod -a -G ${groupe} alain;done;

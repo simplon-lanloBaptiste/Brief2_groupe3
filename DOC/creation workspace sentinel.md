@@ -21,7 +21,7 @@ Tous les éléments ont été télécharges sur le /home, dont un script python 
 sudo ./onboard_agent.sh
 ```
 
-Lors de l'installation, un message indique qu'il manque des prérequis, à savoir gdb et python, qui sont donc à installer :  
+Lors de l'installation, un message indique qu'il manque des prérequis, à savoir gdb (GNU Debugger) et python, qui sont donc à installer :  
 
 ```console
 aptget install gdb  

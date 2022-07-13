@@ -150,7 +150,7 @@ ___
     - [ ] Vérification du logging d'Azure Sentinel
     - [ ] Test de disponibilité Application Insights
 <br></br>
-- [ ] Accès à l'application via TLS (HTTPS)
+- [x] Accès à l'application via TLS (HTTPS)
 <br></br>
 - [ ] Création des différentes documentations
 <br></br>

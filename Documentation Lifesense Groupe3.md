@@ -134,7 +134,7 @@ ___
 - [x] Configurer les accès au réseau des VMs
   - [x] Modifier les ports d'accès 
     - [x] 10022 au lieu de 22
-    - [x] 10080 au lieu de 80...)
+    - [x] 10080 au lieu de 80
     - [x] Couper l'accès SSH public aux VMs Appli et BDD
 <br></br>
 - [x] Installation des prérequis
